@@ -1,21 +1,11 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Home Component</div>
-
-          <div class="card-body">I'm an example component.</div>
-        </div>
-      </div>
-    </div>
+  <div id="app">
+    <router-link to="/">Home</router-link>
+    <router-link to="/create">create</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
-  mounted() {
-    console.log("Home mounted");
-  }
-};
+export default {};
 </script>

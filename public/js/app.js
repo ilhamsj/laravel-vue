@@ -1846,17 +1846,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log("Home mounted");
-  }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -37358,30 +37348,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { attrs: { id: "app" } },
+    [
+      _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")]),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: "/create" } }, [_vm._v("create")]),
+      _vm._v(" "),
+      _c("router-view")
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Home Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v("I'm an example component.")
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52579,14 +52559,14 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
 /* harmony import */ var _components_Toy_IndexComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Toy/IndexComponent */ "./resources/js/components/Toy/IndexComponent.vue");
-/* harmony import */ var _components_Toy_EditComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Toy/EditComponent */ "./resources/js/components/Toy/EditComponent.vue");
-/* harmony import */ var _components_Toy_CreateComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Toy/CreateComponent */ "./resources/js/components/Toy/CreateComponent.vue");
+/* harmony import */ var _components_Toy_CreateComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Toy/CreateComponent */ "./resources/js/components/Toy/CreateComponent.vue");
+/* harmony import */ var _components_Toy_EditComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Toy/EditComponent */ "./resources/js/components/Toy/EditComponent.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -52594,23 +52574,23 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 
+Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios__WEBPACK_IMPORTED_MODULE_1___default.a);
 
-Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTED_MODULE_2___default.a);
 
 
 
 var routes = [{
   name: "home",
-  path: "/",
-  component: "IndexComponent"
+  component: _components_Toy_IndexComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
+  path: "/"
 }, {
   name: "create",
-  path: "/create",
-  component: "CreateComponent"
+  component: _components_Toy_CreateComponent__WEBPACK_IMPORTED_MODULE_5__["default"],
+  path: "/create"
 }, {
   name: "edit",
-  path: "/edit",
-  component: "EditComponent"
+  component: _components_Toy_EditComponent__WEBPACK_IMPORTED_MODULE_6__["default"],
+  path: "/edit"
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: "history",
