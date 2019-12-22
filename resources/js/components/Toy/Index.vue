@@ -2,11 +2,10 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Index</div>
-
-          <div class="card-body">I'm an example component.</div>
-        </div>
+        <h3>Toys</h3>
+        <ul v-for="toy in toys" :key="toy.id">
+          <li>{{ toy.name }}</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -14,8 +13,16 @@
 
 <script>
 export default {
-  mounted() {
-    console.log("Index mounted");
+  data() {
+    return {
+      toys: []
+    };
+  },
+  created() {
+    let url = "/api/toys";
+    this.axios.get(url).then(response => {
+      this.toys = response.data.data;
+    });
   }
 };
 </script>
