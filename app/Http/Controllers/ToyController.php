@@ -20,7 +20,12 @@ class ToyController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required'],
+            'color' => ['required'],
+        ]);
+        $item = Toy::create($request->all());
+        return new ToyResource($item);
     }
 
     public function show($id)
