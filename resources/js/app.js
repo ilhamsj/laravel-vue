@@ -11,25 +11,32 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 import App from "./components/App";
-import ToysIndex from "./components/Toy/IndexComponent";
-import ToyCreate from "./components/Toy/CreateComponent";
-import ToyEdit from "./components/Toy/EditComponent";
+import Home from "./components/Home";
+// toy
+import ToysIndex from "./components/Toy/Index";
+import ToyCreate from "./components/Toy/Create";
+import ToyEdit from "./components/Toy/Edit";
 
 const routes = [
     {
         name: "home",
-        component: ToysIndex,
+        component: Home,
         path: "/"
+    },
+    {
+        name: "toys",
+        component: ToysIndex,
+        path: "/toys"
     },
     {
         name: "create",
         component: ToyCreate,
-        path: "/create"
+        path: "/toy/create"
     },
     {
         name: "edit",
         component: ToyEdit,
-        path: "/edit"
+        path: "/toy/edit"
     }
 ];
 
