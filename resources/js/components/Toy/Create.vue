@@ -35,16 +35,22 @@ export default {
       post: {}
     };
   },
+  props: ["errors"],
   methods: {
     addPost() {
       console.log(this.post);
       axios
         .post("/api/toys", this.post)
-        .then(res => {
-          console.log(res);
+        .then(response => {
+          console.log(response);
+          this.$router.push({ name: "toys" });
         })
-        .catch(err => {
-          console.error(err);
+        .catch(error => {
+          var x = Object.values(error.response.data.errors);
+          x.map((val, index) => {
+            console.log(val[index]);
+            alert(val[index]);
+          });
         });
     }
   }
