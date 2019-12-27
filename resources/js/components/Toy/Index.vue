@@ -7,11 +7,9 @@
           <li>
             {{ toy.id }}
             {{ toy.name }}
-            <button
-              type="button"
-              class="btn btn-primary"
-              @click="deletePost(toy.id)"
-            >Delete</button>
+            {{ toy.color }}
+            <router-link :to="{name: 'edit', params: {id: toy.id}}">Edit</router-link>
+            <button type="button" class="btn btn-primary" @click="deletePost(toy.id)">Delete</button>
           </li>
         </ul>
       </div>
@@ -27,18 +25,39 @@ export default {
     };
   },
   created() {
-    let url = "/api/toys";
-    this.axios.get(url).then(response => {
-      this.toys = response.data.data;
-    });
+    this.getPost();
   },
   methods: {
-    deletePost(id) {
-      var url = "/api/toys/" + id;
+    getPost() {
+      axios
+        .get("/api/toys")
+        .then(response => {
+          this.toys = response.data.data;
+          console.log(response.data.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    showPost(id) {
+      var url = `/api/toys/${id}`;
       axios
         .get(url)
-        .then(res => {
-          console.log(res.data);
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    deletePost(id) {
+      var url = `/api/toys/${id}`;
+      axios
+        .delete(url)
+        .then(response => {
+          let index = this.toys.findIndex(toys => toys.id == id);
+          this.toys.splice(index, 1);
+          console.log(index);
         })
         .catch(err => {
           console.error(err);

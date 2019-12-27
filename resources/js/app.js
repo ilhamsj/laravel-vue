@@ -36,7 +36,7 @@ const routes = [
     {
         name: "edit",
         component: ToyEdit,
-        path: "/toy/edit"
+        path: "/toy/:id/edit"
     }
 ];
 

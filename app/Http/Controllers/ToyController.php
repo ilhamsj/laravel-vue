@@ -40,11 +40,15 @@ class ToyController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $item = Toy::find($id);
+        $item->update($request->all());
+        return new ToyResource($item);
     }
 
     public function destroy($id)
     {
-        //
+        $item = Toy::find($id);
+        $item->delete();
+        return new ToyResource($item);
     }
 }
