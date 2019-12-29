@@ -10,7 +10,7 @@ class ToyController extends Controller
 {
     public function index()
     {
-        return ToyResource::collection(Toy::orderBy('updated_at', 'desc')->get());
+        return ToyResource::collection(Toy::orderBy('updated_at', 'desc')->paginate(10));
     }
 
     public function create()

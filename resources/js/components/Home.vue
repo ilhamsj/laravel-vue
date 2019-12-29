@@ -2,35 +2,23 @@
   <div class="container">
     <div class="row justify-content-center" style="min-height: 100vh">
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">
-            <ul>
-              <li>
-                <a target="_blank" href="/api/v1/toys">toys</a>
-              </li>
-              <li>
-                <a target="_blank" href="/api/v1/categories">categories</a>
-              </li>
-              <li>
-                <a target="_blank" href="/api/v1/products">products</a>
-              </li>
-              <li>
-                <a target="_blank" href="/api/v1/transactions">transactions</a>
-              </li>
-            </ul>
-          </div>
-          <div class="card-header">{{ message }}</div>
-          <div :style="myStyle" class="card-body">{{ reverseMessage }}</div>
-          <div class="card-body">{{ now }}</div>
-          <div class="card-body">
-            <div v-if="this.toys.length > 3">Now you see me</div>
-            <div v-else>{{ this.toys.length }}</div>
-          </div>
-          <div class="card-body">
-            <ul v-for="(item, index) in toys" :key="index">
-              <li @click="deleteItem(index)">{{ `${index} ${item.name} ${item.id}` }}</li>
-            </ul>
-          </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead class="thead-inverse">
+              <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>ID</th>
+              </tr>
+            </thead>
+            <tbody v-for="(item, index) in toys" :key="index">
+              <tr @click="deleteItem(index)">
+                <td scope="row">{{ index }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.id }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -43,7 +31,7 @@ export default {
     //
   },
   created() {
-    //
+    this.getToy;
   },
   data() {
     return {
@@ -82,10 +70,5 @@ export default {
       return Date.now();
     }
   }
-  /*
-  function => () => {
-
-  }
-  */
 };
 </script>

@@ -4,7 +4,6 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">Create</div>
-
           <div class="card-body">
             <form @submit.prevent="addPost">
               <div class="form-group">
