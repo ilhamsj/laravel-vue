@@ -1,15 +1,44 @@
-# Blog
+# Sistem Kasir
 
-## How To
+## Database Schema (DBMS)
 
-1. Scafold Vue.js
-1. Install [vue-axios](#axios), [vue-router](#router)
+### User
 
-## js
+-   id
+-   nama
+-   email
+-   telfon
 
--   split
--   reverse
+### Meja
 
-## Notes
+-   id
+-   nama
 
--   computed better than methods
+### Kategori
+
+-   id
+-   nama
+
+### Produk
+
+-   id
+-   nama
+-   foto
+-   harga
+-   kategori_id
+
+### Transaksi
+
+-   id
+-   user_id
+-   meja_id
+-   total
+-   total_bayar
+
+### Transaksi Produk
+
+-   id
+-   produk_id
+-   transaksi_id
+-   jumlah
+-   catatan
