@@ -51,8 +51,11 @@ export default {
         .then(res => {
           this.$router.push({ name: "toys.index" });
         })
-        .catch(err => {
-          console.error(err);
+        .catch(error => {
+          var x = Object.values(error.response.data.errors);
+          x.map((val, index) => {
+            alert(val);
+          });
         });
     }
   }

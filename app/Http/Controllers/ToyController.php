@@ -40,6 +40,11 @@ class ToyController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => ['required'],
+            'color' => ['required'],
+        ]);
+
         $item = Toy::find($id);
         $item->update($request->all());
         return new ToyResource($item);

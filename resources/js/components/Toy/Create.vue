@@ -42,8 +42,7 @@ export default {
         .catch(error => {
           var x = Object.values(error.response.data.errors);
           x.map((val, index) => {
-            console.log(val[index]);
-            alert(val[index]);
+            alert(val);
           });
         });
     }
