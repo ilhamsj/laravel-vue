@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Test\TestResource;
+use App\Http\Resources\Product\ProductCollection;
+use App\Http\Resources\Product\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return TestResource::collection(Product::orderBy('updated_at', 'desc')->get());
+        return new ProductCollection(Product::orderBy('updated_at', 'desc')->get());
     }
 
     public function create()
@@ -25,7 +26,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        return new TestResource(Product::find($id));
+        return new ProductResource(Product::find($id));
     }
 
     public function edit($id)
