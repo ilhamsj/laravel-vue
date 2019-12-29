@@ -25,7 +25,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+        return new TestResource(Product::find($id));
     }
 
     public function edit($id)

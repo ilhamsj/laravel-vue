@@ -11,4 +11,14 @@ class Product extends Model
         'name',
         'price',
     ];
+
+    public function Transaction()
+    {
+        return $this->belongsToMany('App\Transaction', 'transaction_products');
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\Category');
+    }
 }

@@ -11,4 +11,9 @@ class Transaction extends Model
         'total',
         'pay',
     ];
+
+    public function Product()
+    {
+        return $this->belongsToMany('App\Product', 'transaction_products');
+    }
 }

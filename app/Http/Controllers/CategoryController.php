@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Resources\Test\TestCollection;
 use App\Http\Resources\Test\TestResource;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return TestResource::collection(Category::orderBy('updated_at', 'desc')->get());
+        return new TestCollection(Category::orderBy('updated_at', 'desc')->get());
     }
 
     public function create()
@@ -25,7 +26,7 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        //
+        return new TestResource(Category::find($id));
     }
 
     public function edit($id)

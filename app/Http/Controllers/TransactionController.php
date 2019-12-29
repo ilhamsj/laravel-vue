@@ -25,7 +25,7 @@ class TransactionController extends Controller
 
     public function show($id)
     {
-        //
+        return new TestResource(Transaction::find($id));
     }
 
     public function edit($id)
