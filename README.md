@@ -1,5 +1,7 @@
 # Sistem Kasir
 
+[<img src="public/images/sistem-kasir.png" title="BrowserStack Logo" alt="BrowserStack Logo" />](public/images/sistem-kasir.png)
+
 ## Database Schema (DBMS)
 
 ### User
@@ -33,7 +35,7 @@
 -   user_id
 -   meja_id
 -   total
--   total_bayar
+-   bayar
 
 ### Transaksi Produk
 

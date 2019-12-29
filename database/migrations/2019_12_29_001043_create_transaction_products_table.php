@@ -15,6 +15,20 @@ class CreateTransactionProductsTable extends Migration
     {
         Schema::create('transaction_products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('product_id')->unsigned()->index();
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->bigInteger('transaction_id')->unsigned()->index();
+            $table->foreign('transaction_id')
+                ->references('id')
+                ->on('transactions')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->integer('quantities');
+            $table->string('notes');
             $table->timestamps();
         });
     }
