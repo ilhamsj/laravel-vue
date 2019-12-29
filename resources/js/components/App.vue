@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="min-height: 110vh">
+  <div id="app">
     <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm mb-4">
       <div class="container">
         <router-link :to="{ name: 'home' }" class="navbar-brand">
@@ -20,10 +20,13 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
+              <router-link :to="{ name: 'toys.index' }" class="nav-link">Toys</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'toys.index' }" class="nav-link">Toys</router-link>
+              <router-link :to="{ name: 'toys.index' }" class="nav-link">Product</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'toys.index' }" class="nav-link">Transaksi</router-link>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -52,12 +55,8 @@
 export default {
   data() {
     return {
-      menus: {}
+      menus: "home"
     };
-  },
-  mounted() {
-    // console.log(Object.values(this.menus));
-    console.log(Object.keys(this.menus));
   }
 };
 </script>

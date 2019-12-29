@@ -2,27 +2,21 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Create</div>
-
-          <div class="card-body">
-            <form @submit.prevent="updateToy">
-              <div class="form-group">
-                <input v-model="toy.name" type="text" name="name" class="form-control" />
-              </div>
-              <div class="form-group">
-                <input v-model="toy.color" type="color" name="colo" class="form-control" />
-              </div>
-
-              <div class="form-group">
-                <button class="btn btn-primary">Save</button>
-              </div>
-            </form>
-            message is {{ toy.name }}
-            <br />
-            color is {{ toy.color }}
+        <form @submit.prevent="updateToy">
+          <div class="form-group">
+            <input v-model="toy.name" type="text" name="name" class="form-control" />
           </div>
-        </div>
+          <div class="form-group">
+            <input v-model="toy.color" type="color" name="colo" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary">Save</button>
+          </div>
+        </form>
+        Message is {{ toy.name }}
+        <br />
+        Color is {{ toy.color }}
       </div>
     </div>
   </div>
@@ -55,7 +49,7 @@ export default {
       axios
         .put(`/api/toys/${this.toy.id}`, this.toy)
         .then(res => {
-          this.$router.push({ name: "toys" });
+          this.$router.push({ name: "toys.index" });
         })
         .catch(err => {
           console.error(err);

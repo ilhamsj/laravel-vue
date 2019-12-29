@@ -2,26 +2,21 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Create</div>
-          <div class="card-body">
-            <form @submit.prevent="addPost">
-              <div class="form-group">
-                <input v-model="post.name" type="text" name="name" class="form-control" />
-              </div>
-              <div class="form-group">
-                <input v-model="post.color" type="color" name="colo" class="form-control" />
-              </div>
-
-              <div class="form-group">
-                <button class="btn btn-primary">Save</button>
-              </div>
-            </form>
-            message is {{ post.name }}
-            <br />
-            color is {{ post.color }}
+        <form @submit.prevent="addPost">
+          <div class="form-group">
+            <input v-model="post.name" type="text" name="name" class="form-control" />
           </div>
-        </div>
+          <div class="form-group">
+            <input v-model="post.color" type="color" name="colo" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary">Save</button>
+          </div>
+        </form>
+        Message is {{ post.name }}
+        <br />
+        Color is {{ post.color }}
       </div>
     </div>
   </div>
@@ -42,7 +37,7 @@ export default {
         .post("/api/toys", this.post)
         .then(response => {
           console.log(response);
-          this.$router.push({ name: "toys" });
+          this.$router.push({ name: "toys.index" });
         })
         .catch(error => {
           var x = Object.values(error.response.data.errors);

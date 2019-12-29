@@ -16,6 +16,10 @@ import Home from "./components/Home";
 import ToysIndex from "./components/Toy/Index";
 import ToyCreate from "./components/Toy/Create";
 import ToyEdit from "./components/Toy/Edit";
+// product
+import ProductsIndex from "./components/Toy/Index";
+import ProductsCreate from "./components/Toy/Create";
+import ProductsEdit from "./components/Toy/Edit";
 
 const routes = [
     {
@@ -37,6 +41,21 @@ const routes = [
         name: "toys.edit",
         component: ToyEdit,
         path: "/toy/:id/edit"
+    },
+    {
+        name: "products.index",
+        component: ProductsIndex,
+        path: "/products"
+    },
+    {
+        name: "products.create",
+        component: ProductsCreate,
+        path: "/product/create"
+    },
+    {
+        name: "products.edit",
+        component: ProductsEdit,
+        path: "/product/:id/edit"
     }
 ];
 

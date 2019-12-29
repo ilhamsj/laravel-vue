@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-sm-12 col-md-8">
         <form action>
           <div class="row flex-row-reverse">
             <div class="form-group col align-self-end text-right">
@@ -10,8 +10,6 @@
             <div class="form-group col">
               <label for>Search</label>
               <input
-                @keypress="searchToys"
-                v-model="search"
                 type="text"
                 name="search"
                 id="search"
@@ -26,25 +24,25 @@
       <div class="col-12 col-md-8">
         <div class="table-responsive">
           <table class="table table-striped table-bordered">
-            <thead>
+            <thead class="thead-inverse">
               <tr>
-                <th>ID</th>
+                <th>Index</th>
                 <th>Name</th>
                 <th>Color</th>
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody v-for="toy in toys" :key="toy.id">
+            <tbody v-for="(item, index) in toys" :key="index">
               <tr>
-                <td scope="row">{{ toy.id }}</td>
-                <td>{{ toy.name }}</td>
-                <td>{{ toy.color }}</td>
+                <td>{{ index }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.color }}</td>
                 <td>
                   <router-link
-                    :to="{name: 'toys.edit', params: {id: toy.id}}"
+                    :to="{name: 'toys.edit', params: {id: item.id}}"
                     class="btn btn-primary"
                   >Edit</router-link>
-                  <a href v-on:click.prevent="deletePost(toy.id)" class="btn btn-danger">Delete</a>
+                  <a href v-on:click.prevent="deleteItem(item.id)" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
             </tbody>
@@ -57,37 +55,39 @@
 
 <script>
 export default {
+  mounted() {
+    //
+  },
+  created() {
+    this.getItem;
+  },
   data() {
     return {
       toys: [],
-      search: ""
+      no: 1
     };
   },
-  mounted() {
-    this.getPost();
-  },
   methods: {
-    searchToys() {
-      console.log(this.search);
-    },
-    getPost() {
-      axios
-        .get("/api/toys")
-        .then(response => {
-          console.log(response);
-          this.toys = response.data.data;
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    },
-    deletePost(id) {
+    deleteItem(id) {
       var url = `/api/toys/${id}`;
       axios
         .delete(url)
         .then(response => {
+          alert("Yakin ?");
           let index = this.toys.findIndex(toys => toys.id == id);
           this.toys.splice(index, 1);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+  },
+  computed: {
+    getItem() {
+      axios
+        .get("/api/toys")
+        .then(res => {
+          this.toys = res.data.data;
         })
         .catch(err => {
           console.error(err);

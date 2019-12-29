@@ -11,6 +11,6 @@ class ToysTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Toy::class, 100)->create();
+        factory(\App\Toy::class, 10)->create();
     }
 }
