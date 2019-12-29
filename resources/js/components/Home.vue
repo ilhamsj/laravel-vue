@@ -3,6 +3,22 @@
     <div class="row justify-content-center" style="min-height: 100vh">
       <div class="col-md-8">
         <div class="card">
+          <div class="card-header">
+            <ul>
+              <li>
+                <a target="_blank" href="/api/v1/toys">toys</a>
+              </li>
+              <li>
+                <a target="_blank" href="/api/v1/categories">categories</a>
+              </li>
+              <li>
+                <a target="_blank" href="/api/v1/products">products</a>
+              </li>
+              <li>
+                <a target="_blank" href="/api/v1/transactions">transactions</a>
+              </li>
+            </ul>
+          </div>
           <div class="card-header">{{ message }}</div>
           <div :style="myStyle" class="card-body">{{ reverseMessage }}</div>
           <div class="card-body">{{ now }}</div>

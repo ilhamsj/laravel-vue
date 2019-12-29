@@ -18,6 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('toys', 'ToyController');
-Route::resource('categories', 'CategoriesController');
-Route::resource('products', 'ProductsController');
-Route::resource('transactions', 'TransactionsController');
+
+Route::group(['prefix' => 'v1'], function () {
+    Route::resource('toys', 'ToyController');
+    Route::resource('categories', 'CategoryController');
+    Route::resource('products', 'ProductController');
+    Route::resource('transactions', 'TransactionController');
+});
