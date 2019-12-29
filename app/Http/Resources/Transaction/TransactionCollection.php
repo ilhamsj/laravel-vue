@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Test;
+namespace App\Http\Resources\Transaction;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class TestCollection extends ResourceCollection
+class TransactionCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,7 +15,7 @@ class TestCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => TestResource::collection($this->collection),
+            'data' => TransactionResource::collection($this->collection),
             'meta' => [
                 'count' => $this->collection->count(),
             ],
