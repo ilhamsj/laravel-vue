@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      var url = `/api/products/${id}`;
+      var url = `/api/v1/products/${id}`;
       axios
         .delete(url)
         .then(response => {

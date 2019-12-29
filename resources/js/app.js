@@ -69,11 +69,31 @@ const routes = [
         component: CategoriesIndex,
         path: "/categories"
     },
+    {
+        name: "categories.create",
+        component: ProductsCreate,
+        path: "/category/create"
+    },
+    {
+        name: "categories.edit",
+        component: ProductsEdit,
+        path: "/category/:id/edit"
+    },
     // Transaction
     {
         name: "transactions.index",
         component: TransactionsIndex,
         path: "/transactions"
+    },
+    {
+        name: "transactions.create",
+        component: ProductsCreate,
+        path: "/transactions/create"
+    },
+    {
+        name: "transactions.edit",
+        component: ProductsEdit,
+        path: "/transactions/:id/edit"
     }
 ];
 
