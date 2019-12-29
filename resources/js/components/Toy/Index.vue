@@ -31,8 +31,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Color</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody v-for="toy in toys" :key="toy.id">
@@ -41,10 +40,11 @@
                 <td>{{ toy.name }}</td>
                 <td>{{ toy.color }}</td>
                 <td>
-                  <router-link :to="{name: 'edit', params: {id: toy.id}}">Edit</router-link>
-                </td>
-                <td>
-                  <a href v-on:click.prevent="deletePost(toy.id)">Delete</a>
+                  <router-link
+                    :to="{name: 'edit', params: {id: toy.id}}"
+                    class="btn btn-primary"
+                  >Edit</router-link>
+                  <a href v-on:click.prevent="deletePost(toy.id)" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
             </tbody>
