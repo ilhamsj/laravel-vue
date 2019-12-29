@@ -24,17 +24,17 @@ const routes = [
         path: "/"
     },
     {
-        name: "toys",
+        name: "toys.index",
         component: ToysIndex,
         path: "/toys"
     },
     {
-        name: "create",
+        name: "toys.create",
         component: ToyCreate,
         path: "/toy/create"
     },
     {
-        name: "edit",
+        name: "toys.edit",
         component: ToyEdit,
         path: "/toy/:id/edit"
     }

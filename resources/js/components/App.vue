@@ -2,7 +2,9 @@
   <div id="app" style="min-height: 110vh">
     <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm mb-4">
       <div class="container">
-        <router-link :to="{ name: 'home' }" class="navbar-brand">Navbar</router-link>
+        <router-link :to="{ name: 'home' }" class="navbar-brand">
+          <b>Sistem Kasir</b>
+        </router-link>
 
         <button
           class="navbar-toggler d-lg-none"
@@ -21,7 +23,7 @@
               <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'toys' }" class="nav-link">Toys</router-link>
+              <router-link :to="{ name: 'toys.index' }" class="nav-link">Toys</router-link>
             </li>
             <li class="nav-item dropdown">
               <a

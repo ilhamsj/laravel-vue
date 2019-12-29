@@ -5,7 +5,7 @@
         <form action>
           <div class="row flex-row-reverse">
             <div class="form-group col align-self-end text-right">
-              <router-link :to="{ name: 'create' }" class="btn btn-primary">New Data</router-link>
+              <router-link :to="{ name: 'toys.create' }" class="btn btn-primary">New Data</router-link>
             </div>
             <div class="form-group col">
               <label for>Search</label>
@@ -41,7 +41,7 @@
                 <td>{{ toy.color }}</td>
                 <td>
                   <router-link
-                    :to="{name: 'edit', params: {id: toy.id}}"
+                    :to="{name: 'toys.edit', params: {id: toy.id}}"
                     class="btn btn-primary"
                   >Edit</router-link>
                   <a href v-on:click.prevent="deletePost(toy.id)" class="btn btn-danger">Delete</a>
