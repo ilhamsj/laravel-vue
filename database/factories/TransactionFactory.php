@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Transaction::class, function (Faker $faker) {
     return [
         'customer' => $faker->name,
-        'total' => rand($min = 0, $max = 10),
-        'pay' => rand($min = 0, $max = 10),
+        'total' => rand(1000, 10000),
+        'pay' => rand(1000, 10000),
     ];
 });
