@@ -23,6 +23,9 @@
               <router-link :to="{ name: 'toys.index' }" class="nav-link">Toys</router-link>
             </li>
             <li class="nav-item">
+              <router-link :to="{ name: 'toys.index' }" class="nav-link">Kasir</router-link>
+            </li>
+            <li class="nav-item">
               <router-link :to="{ name: 'toys.index' }" class="nav-link">Product</router-link>
             </li>
             <li class="nav-item">
