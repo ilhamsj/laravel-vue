@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-12 col-md-8">
+      <div class="col-12">
         <form action>
           <div class="row flex-row-reverse">
             <div class="form-group col align-self-end text-right">
               <router-link :to="{ name: 'toys.create' }" class="btn btn-primary">New Data</router-link>
             </div>
             <div class="form-group col">
-              <label for>Search</label>
+              <label for>Search Toy</label>
               <input
                 type="text"
                 name="search"
@@ -21,7 +21,7 @@
           </div>
         </form>
       </div>
-      <div class="col-12 col-md-8">
+      <div class="col-12">
         <div class="table-responsive">
           <table class="table table-striped table-bordered">
             <thead class="thead-inverse">

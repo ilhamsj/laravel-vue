@@ -23,13 +23,13 @@
               <router-link :to="{ name: 'toys.index' }" class="nav-link">Toys</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'toys.index' }" class="nav-link">Kasir</router-link>
+              <router-link :to="{ name: 'categories.index' }" class="nav-link">Categories</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'toys.index' }" class="nav-link">Product</router-link>
+              <router-link :to="{ name: 'products.index' }" class="nav-link">Product</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'toys.index' }" class="nav-link">Transaksi</router-link>
+              <router-link :to="{ name: 'transactions.index' }" class="nav-link">Transaksi</router-link>
             </li>
             <li class="nav-item dropdown">
               <a

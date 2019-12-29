@@ -17,9 +17,13 @@ import ToysIndex from "./components/Toy/Index";
 import ToyCreate from "./components/Toy/Create";
 import ToyEdit from "./components/Toy/Edit";
 // product
-import ProductsIndex from "./components/Toy/Index";
-import ProductsCreate from "./components/Toy/Create";
-import ProductsEdit from "./components/Toy/Edit";
+import ProductsIndex from "./components/Product/Index";
+import ProductsCreate from "./components/Product/Create";
+import ProductsEdit from "./components/Product/Edit";
+// categories
+import CategoriesIndex from "./components/Category/Index";
+// Transaction
+import TransactionsIndex from "./components/Transaction/Index";
 
 const routes = [
     {
@@ -27,6 +31,7 @@ const routes = [
         component: Home,
         path: "/"
     },
+    // toys
     {
         name: "toys.index",
         component: ToysIndex,
@@ -42,6 +47,7 @@ const routes = [
         component: ToyEdit,
         path: "/toy/:id/edit"
     },
+    // products
     {
         name: "products.index",
         component: ProductsIndex,
@@ -56,6 +62,18 @@ const routes = [
         name: "products.edit",
         component: ProductsEdit,
         path: "/product/:id/edit"
+    },
+    // Category
+    {
+        name: "categories.index",
+        component: CategoriesIndex,
+        path: "/categories"
+    },
+    // Transaction
+    {
+        name: "transactions.index",
+        component: TransactionsIndex,
+        path: "/transactions"
     }
 ];
 
