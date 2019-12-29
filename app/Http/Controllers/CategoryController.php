@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return CategoryResource::collection(Category::orderBy('updated_at', 'desc')->get());
+        return new CategoryCollection(Category::with('products')->orderBy('updated_at', 'desc')->get());
     }
 
     public function create()
@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        return new CategoryResource(Category::find($id));
+        return new CategoryResource(Category::with('products')->find($id));
     }
 
     public function edit($id)

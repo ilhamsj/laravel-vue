@@ -15,9 +15,9 @@ class CategoryCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => $this->collection,
-            'links' => [
-                'self' => 'link-value',
+            'data' => CategoryResource::collection($this->collection),
+            'meta' => [
+                'count' => $this->collection->count(),
             ],
         ];
     }
