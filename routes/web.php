@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+Auth::routes();
 
-Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any', '.*');
+// Route::get('/{any}', function () {
+//     return view('welcome');
+// })->where('any', '.*');
+
+Route::get('user', function () {
+    return view('admin');
+});

@@ -26,7 +26,6 @@
           <table class="table table-striped table-bordered">
             <thead class="thead-inverse">
               <tr>
-                <th>Index</th>
                 <th>Name</th>
                 <th>Color</th>
                 <th>Action</th>
@@ -34,7 +33,6 @@
             </thead>
             <tbody v-for="(item, index) in toys" :key="index">
               <tr>
-                <td>{{ index }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.color }}</td>
                 <td>
@@ -69,17 +67,21 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      var url = `/api/toys/${id}`;
-      axios
-        .delete(url)
-        .then(response => {
-          alert("Yakin ?");
-          let index = this.toys.findIndex(toys => toys.id == id);
-          this.toys.splice(index, 1);
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      var status = confirm("Are you sure ?");
+
+      if (status) {
+        var url = `/api/toys/${id}`;
+        axios
+          .delete(url)
+          .then(response => {
+            let index = this.toys.findIndex(toys => toys.id == id);
+            this.toys.splice(index, 1);
+            alert("Delete Success");
+          })
+          .catch(err => {
+            console.error(err);
+          });
+      }
     }
   },
   computed: {

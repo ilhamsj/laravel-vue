@@ -26,14 +26,12 @@
           <table class="table table-striped table-bordered">
             <thead class="thead-inverse">
               <tr>
-                <th>Index</th>
                 <th>Name</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody v-for="(item, index) in categories" :key="index">
               <tr>
-                <td>{{ index }}</td>
                 <td>{{ item.name }}</td>
                 <td>
                   <router-link
@@ -70,7 +68,13 @@ export default {
       axios
         .delete(url)
         .then(response => {
-          alert("Yakin ?");
+          // alert("Yakin ?");
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
           let index = this.categories.findIndex(
             categories => categories.id == id
           );
