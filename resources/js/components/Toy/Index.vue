@@ -2,12 +2,12 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Dashboard</h1>
+        <h1 class="page-header">Toys</h1>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-lg-7">
+      <div class="col-lg-6">
         <div class="panel panel-default">
           <div class="panel-heading">DataTables Advanced Tables</div>
           <div class="panel-body">
@@ -15,13 +15,13 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
+                    <th>Toy Name</th>
+                    <th>Color</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
-                <tbody v-for="(item, index) in toys" :key="index">
-                  <tr>
+                <tbody>
+                  <tr v-for="(item, index) in toys" :key="index">
                     <td>{{ item.name }}</td>
                     <td>{{ item.color }}</td>
                     <td>

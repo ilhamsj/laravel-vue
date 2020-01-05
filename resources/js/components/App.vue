@@ -13,7 +13,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#index">SB Admin v2.0</a>
+        <a class="navbar-brand" href="#index">Point of Sale</a>
       </div>
 
       <ul class="nav navbar-top-links navbar-right">
@@ -278,7 +278,7 @@
             </li>
             <li>
               <router-link :to="{ name: 'toys.index' }" class="nav-link">
-                <i class="fa fa-gamepad"></i> Toys
+                <i class="fa fa-bar-chart-o"></i> Toys
               </router-link>
             </li>
             <li>
