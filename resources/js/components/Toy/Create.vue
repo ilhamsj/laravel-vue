@@ -7,18 +7,23 @@
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <form @submit.prevent="addPost">
-          <div class="form-group">
-            <input v-model="post.name" type="text" name="name" class="form-control" />
-          </div>
-          <div class="form-group">
-            <input v-model="post.color" type="color" name="colo" class="form-control" />
-          </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Basic Form Elements</div>
+          <div class="panel-body">
+            <form @submit.prevent="addPost">
+              <div class="form-group">
+                <label>Text Name</label>
+                <input v-model="post.name" type="text" name="name" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Text Color</label>
+                <input v-model="post.color" type="color" name="colo" class="form-control" />
+              </div>
 
-          <div class="form-group">
-            <button class="btn btn-outline btn-primary">Save</button>
+              <button class="btn btn-outline btn-primary">Save</button>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>

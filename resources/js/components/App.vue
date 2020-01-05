@@ -278,7 +278,12 @@
             </li>
             <li>
               <router-link :to="{ name: 'toys.index' }" class="nav-link">
-                <i class="fa fa-database"></i> Toys
+                <i class="fa fa-table"></i> Toys
+              </router-link>
+            </li>
+            <li>
+              <router-link :to="{ name: 'products.index' }" class="nav-link">
+                <i class="fa fa-table"></i> Product
               </router-link>
             </li>
             <li>
