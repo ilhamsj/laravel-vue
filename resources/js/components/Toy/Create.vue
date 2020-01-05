@@ -1,7 +1,12 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Create</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
         <form @submit.prevent="addPost">
           <div class="form-group">
             <input v-model="post.name" type="text" name="name" class="form-control" />
@@ -11,12 +16,9 @@
           </div>
 
           <div class="form-group">
-            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-outline btn-primary">Save</button>
           </div>
         </form>
-        Message is {{ post.name }}
-        <br />
-        Color is {{ post.color }}
       </div>
     </div>
   </div>

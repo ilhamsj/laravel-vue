@@ -1,7 +1,12 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Edit</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
         <form @submit.prevent="updateToy">
           <div class="form-group">
             <input v-model="toy.name" type="text" name="name" class="form-control" />

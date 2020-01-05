@@ -278,7 +278,7 @@
             </li>
             <li>
               <router-link :to="{ name: 'toys.index' }" class="nav-link">
-                <i class="fa fa-bar-chart-o"></i> Toys
+                <i class="fa fa-database"></i> Toys
               </router-link>
             </li>
             <li>
