@@ -1,50 +1,49 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <form action>
-          <div class="row flex-row-reverse">
-            <div class="form-group col align-self-end text-right">
-              <router-link :to="{ name: 'toys.create' }" class="btn btn-primary">New Data</router-link>
-            </div>
-            <div class="form-group col">
-              <label for>Search Toy</label>
-              <input
-                type="text"
-                name="search"
-                id="search"
-                class="form-control"
-                placeholder
-                aria-describedby="helpId"
-              />
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Dashboard</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">DataTables Advanced Tables</div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Rendering engine</th>
+                    <th>Browser</th>
+                    <th>Platform(s)</th>
+                  </tr>
+                </thead>
+                <tbody v-for="(item, index) in toys" :key="index">
+                  <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.color }}</td>
+                    <td>
+                      <router-link
+                        :to="{name: 'toys.edit', params: {id: item.id}}"
+                        class="btn btn-primary btn-circle"
+                      >
+                        <i class="fa fa-pencil"></i>
+                      </router-link>
+                      <a
+                        href
+                        v-on:click.prevent="deleteItem(item.id)"
+                        class="btn btn-danger btn-circle"
+                      >
+                        <i class="fa fa-times"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="col-12">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered">
-            <thead class="thead-inverse">
-              <tr>
-                <th>Name</th>
-                <th>Color</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody v-for="(item, index) in toys" :key="index">
-              <tr>
-                <td>{{ item.name }}</td>
-                <td>{{ item.color }}</td>
-                <td>
-                  <router-link
-                    :to="{name: 'toys.edit', params: {id: item.id}}"
-                    class="btn btn-primary"
-                  >Edit</router-link>
-                  <a href v-on:click.prevent="deleteItem(item.id)" class="btn btn-danger">Delete</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>

@@ -408,7 +408,8 @@
                             </div>
                         </a>
                     </div>
-                </div>            </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -844,11 +845,11 @@
     <script src="{{ secure_url('admin/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
     <script src="{{ secure_url('admin/dist/js/sb-admin-2.js') }}"></script>
     <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
         });
-    });
     </script>
 
 </body>
