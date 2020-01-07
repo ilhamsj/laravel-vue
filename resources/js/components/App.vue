@@ -282,6 +282,11 @@
               </router-link>
             </li>
             <li>
+              <router-link :to="{ name: 'categories.index' }" class="nav-link">
+                <i class="fa fa-table"></i> Categories
+              </router-link>
+            </li>
+            <li>
               <router-link :to="{ name: 'products.index' }" class="nav-link">
                 <i class="fa fa-table"></i> Product
               </router-link>
