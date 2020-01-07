@@ -17,7 +17,10 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
-          <div class="panel-heading">Basic Form Elements</div>
+          <div class="panel-heading">
+            Basic Form Elements
+            <span v-if="loading">Loading ...</span>
+          </div>
           <div class="panel-body">
             <form @submit.prevent="store">
               <div class="form-group has-error">
@@ -61,7 +64,8 @@ export default {
     return {
       categories: [],
       post: {},
-      errored: false
+      errored: false,
+      loading: false
     };
   },
   created() {
@@ -76,12 +80,14 @@ export default {
           this.categories = res.data.data;
         })
         .catch(err => {
-          console.error(err);
+          // console.error(err);
+          this.errors = err;
         });
     }
   },
   methods: {
     store() {
+      this.loading = true;
       axios
         .post("/api/v1/products", this.post)
         .then(response => {
@@ -89,7 +95,8 @@ export default {
         })
         .catch(error => {
           this.errored = true;
-        });
+        })
+        .finally(() => (this.loading = false));
     }
   }
 };
