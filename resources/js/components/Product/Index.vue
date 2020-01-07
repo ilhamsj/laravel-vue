@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <h1 class="page-header">Product</h1>
       </div>
-      <div class="col-lg-12">
+      <div class="col-lg-12" v-if="alert">
         <div class="alert alert-success">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           <a
@@ -32,7 +32,7 @@
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                   <li>
-                    <router-link :to="{ name: 'toys.create' }" class="nav-link">New Data</router-link>
+                    <router-link :to="{ name: 'products.create' }" class="nav-link">New Data</router-link>
                   </li>
                   <li>
                     <a href="#">Another action</a>
@@ -104,7 +104,8 @@ export default {
   data() {
     return {
       toys: [],
-      no: 1
+      no: 1,
+      alert: false
     };
   },
   methods: {
@@ -112,13 +113,18 @@ export default {
       var status = confirm("Are you sure ?");
 
       if (status) {
-        var url = `/api/toys/${id}`;
+        var url = `/api/v1/products/${id}`;
         axios
           .delete(url)
           .then(response => {
             let index = this.toys.findIndex(toys => toys.id == id);
             this.toys.splice(index, 1);
-            alert("Delete Success");
+            this.alert = true;
+
+            var self = this;
+            setTimeout(function() {
+              self.alert = false;
+            }, 3000);
           })
           .catch(err => {
             console.error(err);

@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Product::class, function (Faker $faker) {
     return [
         'category_id'   => factory(\App\Category::class),
-        'name'          => $faker->name,
+        'name'          => $faker->randomElement(['jawamie', 'racun tikus', 'teh jawa', 'ciki', 'baygon', 'rondap']),
         'price'         => rand(1000, 10000),
     ];
 });

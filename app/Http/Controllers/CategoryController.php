@@ -11,7 +11,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return new CategoryCollection(Category::with('products')->orderBy('updated_at', 'desc')->get());
+        // return new CategoryCollection(Category::with('products')->orderBy('updated_at', 'desc')->get());
+        return new CategoryCollection(Category::orderBy('updated_at', 'desc')->get());
     }
 
     public function create()

@@ -21,7 +21,8 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $item = Product::create($request->all());
+        return new ProductResource($item);
     }
 
     public function show($id)
@@ -41,6 +42,9 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        //
+        return $id;
+        // $item = Product::find($id);
+        // $item->delete();
+        // return $item;
     }
 }
