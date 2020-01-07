@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <h1 class="page-header">Toys</h1>
       </div>
-      <div class="col-lg-12">
+      <div class="col-lg-12" v-if="success">
         <div class="alert alert-success">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           <a
@@ -100,7 +100,8 @@ export default {
   data() {
     return {
       toys: [],
-      no: 1
+      no: 1,
+      success: false
     };
   },
   methods: {
@@ -114,7 +115,12 @@ export default {
           .then(response => {
             let index = this.toys.findIndex(toys => toys.id == id);
             this.toys.splice(index, 1);
-            alert("Delete Success");
+            this.success = true;
+
+            var self = this;
+            setTimeout(function() {
+              self.success = false;
+            }, 3000);
           })
           .catch(err => {
             console.error(err);
