@@ -41,6 +41,8 @@ class TransactionController extends Controller
 
     public function destroy($id)
     {
-        //
+        $item = Transaction::find($id);
+        $item->delete();
+        return new TestResource($item);
     }
 }

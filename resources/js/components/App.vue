@@ -278,7 +278,13 @@
             </li>
             <li>
               <router-link :to="{ name: 'toys.index' }" class="nav-link">
-                <i class="fa fa-table"></i> Toys
+                <i class="fa fa-table"></i> Kasir
+              </router-link>
+            </li>
+            <li></li>
+            <li>
+              <router-link :to="{ name: 'transactions.index' }" class="nav-link">
+                <i class="fa fa-table"></i> Transaksi
               </router-link>
             </li>
             <li>

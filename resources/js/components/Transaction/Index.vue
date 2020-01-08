@@ -1,54 +1,99 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <form action>
-          <div class="row flex-row-reverse">
-            <div class="form-group col align-self-end text-right">
-              <router-link :to="{ name: 'transactions.create' }" class="btn btn-primary">New Data</router-link>
-            </div>
-            <div class="form-group col">
-              <label for>Search Transactions</label>
-              <input
-                type="text"
-                name="search"
-                id="search"
-                class="form-control"
-                placeholder
-                aria-describedby="helpId"
-              />
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Transaction</h1>
+      </div>
+      <div class="col-lg-12" v-if="alert">
+        <div class="alert alert-success">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <a
+            href="#"
+            class="alert-link"
+          >Alert Link</a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+            <div class="pull-right">
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-default btn-xs dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  Actions
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                  <li>
+                    <router-link :to="{ name: 'products.create' }" class="nav-link">New Data</router-link>
+                  </li>
+                  <li>
+                    <a href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a href="#">Something else here</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#">Separated link</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="col-12">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered">
-            <thead class="thead-inverse">
-              <tr>
-                <th>Index</th>
-                <th>Name</th>
-                <th>Total</th>
-                <th>Pay</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody v-for="(item, index) in transactions" :key="index">
-              <tr>
-                <td>{{ index }}</td>
-                <td>{{ item.customer }}</td>
-                <td>{{ item.total }}</td>
-                <td>{{ item.pay }}</td>
-                <td>
-                  <router-link
-                    :to="{name: 'transactions.edit', params: {id: item.id}}"
-                    class="btn btn-primary"
-                  >Edit</router-link>
-                  <a href v-on:click.prevent="deleteItem(item.id)" class="btn btn-danger">Delete</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Pay</th>
+                    <th>Created_at</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in toys" :key="index">
+                    <td>{{ item.customer }}</td>
+                    <td>{{ item.total }}</td>
+                    <td>{{ item.pay }}</td>
+                    <td>{{ item.created_at }}</td>
+                    <td>
+                      <a
+                        href
+                        v-on:click.prevent="deleteItem(item.id)"
+                        class="btn btn-info btn-circle"
+                      >
+                        <i class="fa fa-eye"></i>
+                      </a>
+                      <router-link
+                        :to="{name: 'toys.edit', params: {id: item.id}}"
+                        class="btn btn-primary btn-circle"
+                      >
+                        <i class="fa fa-pencil"></i>
+                      </router-link>
+                      <a
+                        href
+                        v-on:click.prevent="deleteItem(item.id)"
+                        class="btn btn-danger btn-circle"
+                      >
+                        <i class="fa fa-times"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -65,24 +110,33 @@ export default {
   },
   data() {
     return {
-      transactions: []
+      toys: [],
+      no: 1,
+      alert: false
     };
   },
   methods: {
     deleteItem(id) {
-      var url = `/api/v1/transactions/${id}`;
-      axios
-        .delete(url)
-        .then(response => {
-          alert("Yakin ?");
-          let index = this.transactions.findIndex(
-            transactions => transactions.id == id
-          );
-          this.transactions.splice(index, 1);
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      var status = confirm("Are you sure ?");
+
+      if (status) {
+        var url = `/api/v1/transactions/${id}`;
+        axios
+          .delete(url)
+          .then(response => {
+            let index = this.toys.findIndex(toys => toys.id == id);
+            this.toys.splice(index, 1);
+            this.alert = true;
+
+            var self = this;
+            setTimeout(function() {
+              self.alert = false;
+            }, 3000);
+          })
+          .catch(err => {
+            console.error(err);
+          });
+      }
     }
   },
   computed: {
@@ -90,7 +144,8 @@ export default {
       axios
         .get("/api/v1/transactions")
         .then(res => {
-          this.transactions = res.data.data;
+          console.log(res.data.data);
+          this.toys = res.data.data;
         })
         .catch(err => {
           console.error(err);
