@@ -42,14 +42,15 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $item = Product::find($id);
+        $item->update($request->all());
+        return new ProductResource($item);
     }
 
     public function destroy($id)
     {
-        return $id;
-        // $item = Product::find($id);
-        // $item->delete();
-        // return $item;
+        $item = Product::find($id);
+        $item->delete();
+        return $item;
     }
 }

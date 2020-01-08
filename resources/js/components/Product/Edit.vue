@@ -2,7 +2,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Create</h1>
+        <h1 class="page-header">Edit</h1>
       </div>
       <div class="col-lg-12" v-if="errored">
         <div class="alert alert-danger">
@@ -22,7 +22,7 @@
             <span v-if="loading">Loading ...</span>
           </div>
           <div class="panel-body">
-            <form @submit.prevent="store">
+            <form @submit.prevent="productsUpdate">
               <div class="form-group has-error">
                 <label for="name" class="control-label">Name</label>
                 <input v-model="post.name" type="text" name="name" id="name" class="form-control" />
@@ -51,7 +51,6 @@
               <button class="btn btn-outline btn-primary">Save</button>
             </form>
           </div>
-          <div class="panel-body">{{ this.post.category }}</div>
         </div>
       </div>
     </div>
@@ -69,32 +68,46 @@ export default {
     };
   },
   created() {
-    this.getItem;
+    this.categoriesIndex();
+    this.productsShow(this.$route.params.id);
   },
   props: ["errors"],
-  computed: {
-    getItem() {
+  computed: {},
+  methods: {
+    categoriesIndex() {
       axios
         .get("/api/v1/categories")
         .then(res => {
           this.categories = res.data.data;
         })
         .catch(err => {
-          // console.error(err);
-          this.errors = err;
+          this.errored = true;
         });
-    }
-  },
-  methods: {
-    store() {
+    },
+    productsShow(id) {
+      axios
+        .get(`/api/v1/products/${id}`)
+        .then(res => {
+          this.post = res.data.data;
+        })
+        .catch(err => {
+          this.errored = true;
+          var self = this;
+          setTimeout(function() {
+            self.errored = false;
+          }, 3000);
+        });
+    },
+    productsUpdate() {
       this.loading = true;
       axios
-        .post("/api/v1/products", this.post)
-        .then(response => {
+        .put(`/api/v1/products/${this.post.id}`, this.post)
+        .then(res => {
           this.$router.push({ name: "products.index" });
+          console.log(res);
         })
-        .catch(error => {
-          this.errored = true;
+        .catch(err => {
+          console.error(err);
         })
         .finally(() => (this.loading = false));
     }

@@ -21,7 +21,8 @@ class ProductResource extends JsonResource
             'name'          => $this->name,
             'price'         => $this->price,
             'category'      => $this->whenLoaded('category', $this->category->name),
-            'created_at'    => $this->created_at,
+            'category_id'   => $this->category_id,
+            'created_at'    => $this->created_at->format('F d, Y'),
             'updated_at'    => $this->updated_at,
         ];
     }
