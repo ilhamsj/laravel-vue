@@ -69,7 +69,7 @@
                     <td>{{ item.created_at }}</td>
                     <td>
                       <router-link
-                        :to="{name: 'toys.edit', params: {id: item.id}}"
+                        :to="{name: 'products.edit', params: {id: item.id}}"
                         class="btn btn-primary btn-circle"
                       >
                         <i class="fa fa-pencil"></i>

@@ -80,8 +80,7 @@ export default {
           this.categories = res.data.data;
         })
         .catch(err => {
-          // console.error(err);
-          this.errors = err;
+          // this.errors = err;
         });
     }
   },
@@ -95,6 +94,10 @@ export default {
         })
         .catch(error => {
           this.errored = true;
+          var self = this;
+          setTimeout(function() {
+            self.errored = false;
+          }, 3000);
         })
         .finally(() => (this.loading = false));
     }

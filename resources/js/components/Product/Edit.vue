@@ -1,22 +1,58 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <form @submit.prevent="updateToy">
-          <div class="form-group">
-            <input v-model="toy.name" type="text" name="name" class="form-control" />
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Create</h1>
+      </div>
+      <div class="col-lg-12" v-if="errored">
+        <div class="alert alert-danger">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <a
+            href="#"
+            class="alert-link"
+          >Alert Link</a>.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Basic Form Elements
+            <span v-if="loading">Loading ...</span>
           </div>
-          <div class="form-group">
-            <input v-model="toy.color" type="color" name="colo" class="form-control" />
-          </div>
+          <div class="panel-body">
+            <form @submit.prevent="store">
+              <div class="form-group has-error">
+                <label for="name" class="control-label">Name</label>
+                <input v-model="post.name" type="text" name="name" id="name" class="form-control" />
+              </div>
+              <div class="form-group has-success">
+                <label for="price" class="control-label">Price</label>
+                <input
+                  v-model="post.price"
+                  type="number"
+                  name="price"
+                  id="price"
+                  class="form-control"
+                />
+              </div>
 
-          <div class="form-group">
-            <button class="btn btn-primary">Save</button>
+              <div class="form-group">
+                <label>Selects</label>
+                <select name="category_id" class="form-control" v-model="post.category_id">
+                  <option
+                    v-for="item in categories"
+                    :key="item.id"
+                    v-bind:value="item.id"
+                  >{{ item.name }}</option>
+                </select>
+              </div>
+              <button class="btn btn-outline btn-primary">Save</button>
+            </form>
           </div>
-        </form>
-        Message is {{ toy.name }}
-        <br />
-        Color is {{ toy.color }}
+          <div class="panel-body">{{ this.post.category }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -26,37 +62,41 @@
 export default {
   data() {
     return {
-      toy: {}
+      categories: [],
+      post: {},
+      errored: false,
+      loading: false
     };
   },
   created() {
-    this.showToy(this.$route.params.id);
+    this.getItem;
   },
-  methods: {
-    showToy(id) {
+  props: ["errors"],
+  computed: {
+    getItem() {
       axios
-        .get(`/api/toys/${id}`)
+        .get("/api/v1/categories")
         .then(res => {
-          this.toy = res.data.data;
-          console.log(res.data);
+          this.categories = res.data.data;
         })
         .catch(err => {
-          console.error(err);
+          // console.error(err);
+          this.errors = err;
         });
-      console.log(id);
-    },
-    updateToy() {
+    }
+  },
+  methods: {
+    store() {
+      this.loading = true;
       axios
-        .put(`/api/toys/${this.toy.id}`, this.toy)
-        .then(res => {
-          this.$router.push({ name: "toys.index" });
+        .post("/api/v1/products", this.post)
+        .then(response => {
+          this.$router.push({ name: "products.index" });
         })
         .catch(error => {
-          var x = Object.values(error.response.data.errors);
-          x.map((val, index) => {
-            alert(val);
-          });
-        });
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
     }
   }
 };

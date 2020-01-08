@@ -77,3 +77,20 @@
 -   id
 -   pelajaran_id
 -   siswa_id
+
+## Think Again
+
+```javascript
+
+Think you can’t become a good developer ? Think again.
+
+Think you can’t become a good designer ?
+Think again.
+
+Think you can’t make a living freelancing? Think again.
+
+
+
+Keep reading and trying
+
+```
