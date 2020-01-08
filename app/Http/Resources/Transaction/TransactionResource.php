@@ -21,8 +21,8 @@ class TransactionResource extends JsonResource
             'total'         => $this->total,
             'pay'           => $this->pay,
             'product'       => $this->product,
-            'created_at'    => $this->created_at,
-            'updated_at'    => $this->updated_at,
+            'created_at'    => $this->created_at->format('F d, Y'),
+            'updated_at'    => $this->updated_at->format('F d, Y'),
         ];
     }
 }

@@ -289,14 +289,15 @@
             </li>
             <li>
               <router-link :to="{ name: 'categories.index' }" class="nav-link">
-                <i class="fa fa-table"></i> Categories
+                <i class="fa fa-table"></i> Kategori
               </router-link>
             </li>
             <li>
               <router-link :to="{ name: 'products.index' }" class="nav-link">
-                <i class="fa fa-table"></i> Product
+                <i class="fa fa-table"></i> Produk
               </router-link>
             </li>
+            <!-- 
             <li>
               <a href="#">
                 <i class="fa fa-bar-chart-o fa-fw"></i> Charts
@@ -381,7 +382,7 @@
                 </li>
               </ul>
             </li>
-            <li class="active">
+            <li>
               <a href="#">
                 <i class="fa fa-files-o fa-fw"></i> Sample Pages
                 <span class="fa arrow"></span>
@@ -395,6 +396,7 @@
                 </li>
               </ul>
             </li>
+            -->
           </ul>
         </div>
       </div>
