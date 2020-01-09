@@ -382,21 +382,22 @@
                 </li>
               </ul>
             </li>
+            -->
+
             <li>
               <a href="#">
-                <i class="fa fa-files-o fa-fw"></i> Sample Pages
+                <i class="fa fa-gear fa-fw"></i> Settings
                 <span class="fa arrow"></span>
               </a>
               <ul class="nav nav-second-level">
                 <li>
-                  <a class="active" href="#blank">Blank Page</a>
+                  <a href="#">User</a>
                 </li>
                 <li>
-                  <a href="#login">Login Page</a>
+                  <a href="#">Theme</a>
                 </li>
               </ul>
             </li>
-            -->
           </ul>
         </div>
       </div>

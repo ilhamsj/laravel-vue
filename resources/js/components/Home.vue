@@ -38,7 +38,7 @@
                 <i class="fa fa-tasks fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">12</div>
+                <div class="huge">{{ this.transactions }}</div>
                 <div>New Tasks!</div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                 <i class="fa fa-shopping-cart fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">124</div>
+                <div class="huge">{{ this.categories }}</div>
                 <div>New Orders!</div>
               </div>
             </div>
@@ -86,7 +86,7 @@
                 <i class="fa fa-support fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">13</div>
+                <div class="huge">{{ this.products }}</div>
                 <div>Support Tickets!</div>
               </div>
             </div>
@@ -110,6 +110,15 @@
 export default {
   mounted() {
     console.log(window.location.pathname);
+  },
+  data() {
+    return {
+      transactions: "99",
+      categories: "100",
+      products: "45",
+      no: 1,
+      success: false
+    };
   }
 };
 </script>
